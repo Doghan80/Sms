@@ -11,11 +11,11 @@ interface HeaderProps {
 function Header({darkMode ,toggleDarkMode,toggleSidebar,sidebarOpen}:HeaderProps) {
   
   return (
-    <nav className={`fixed top-0 z-50 w-full bg-white dark:bg-hover border-secondary dark:border-gray-700 shadow-lg  ${sidebarOpen ? 'ml-0' : '  ml-0'}  `}>
+    <nav className={`fixed top-0 z-50 w-full bg-white dark:bg-hover border-secondary dark:border-hover shadow-lg  ${sidebarOpen ? '' : ' '}  `}>
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end ">
-            <button onClick={toggleSidebar} className={`inline-flex p-2 text-sm text-gray-500 rounded-lg  hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary  dark:text-secondary dark:hover:bg-hover dark:focus:ring-secondary  ${!sidebarOpen ? 'bg-blue-200' : ''} `}>
+            <button onClick={toggleSidebar} className={`inline-flex p-2 text-sm text-primary rounded-lg  hover:bg-background focus:outline-none focus:ring-2 focus:ring-secondary  dark:text-secondary dark:hover:bg-hover dark:focus:ring-secondary  ${!sidebarOpen ? '' : ''} `}>
               <HiOutlineMenuAlt2 className="text-2xl"/>
             </button>
           </div>  

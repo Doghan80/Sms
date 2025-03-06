@@ -4,15 +4,13 @@ import Login from "../components/login&signup";
 import SignupForm from "../components/login&signup/SignupForm";
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Header/Sidebar";
-import Dashboard from "../components/dashboard";
 import Finance from "../components/finance";
-import { CiSettings } from "react-icons/ci";
 import Logout from "../components/logout";
 import Settings from "../components/settings";
 import Notifications from "../components/notifications";
 import Teachers from "../components/teacher_staff";
-import TaskManagement from "../components/tasks";
 import Student from "../components/students/students";
+import Home from "../components/Home/Home";
 function AppRoutes() {
   const [darkMode, setDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -38,15 +36,14 @@ function AppRoutes() {
         </Routes>
       </div>
       {!hideHeaderAndSidebar && (<Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleSidebar={toggleSidebar} sidebarOpen={isSidebarOpen} />)} {!hideHeaderAndSidebar && <Sidebar isSidebarOpen={isSidebarOpen} />}
-      <div className={`transition-all mt-16 duration-300 flex-1 ${isSidebarOpen ? "ml-0 pl-0" : "ml-32 pl-16"}`}>
+      <div className={`transition-all mt-16 duration-300 flex-1 h-screen dark:bg-hover  ${isSidebarOpen ? "ml-0 pl-0" : "ml-32 pl-16"}`}>
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/finance" element={<Finance />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/teacher_staff" element={<Teachers />} />
-          <Route path="/tasks" element={<TaskManagement />} />
           <Route path="/students" element={<Student />} />
         </Routes>
       </div>
