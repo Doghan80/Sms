@@ -21,34 +21,27 @@ const StudentsTab = ({
   totalPages,
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow p-6">
+    <div className="bg-white dark:bg-mini rounded-lg shadow p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-gray-800">Student List</h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-background">Student List</h2>
         <button
           onClick={() => {
             setEditingStudent(null)
             setShowAddForm(true)
           }}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
+          className="bg-primary text-background px-4 py-2 rounded hover:bg-accent" >
           Add New Student
         </button>
       </div>
 
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Search students..."
-          className="w-full p-2 border border-gray-300 rounded"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+      <div className="mb-4 ">
+        <input type="text" placeholder="Search students..." className="w-full p-2 border dark:bg-hover dark:bg-background dark:placehohder-white rounded" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
       </div>
 
       <div className="overflow-auto h-100  overflow-y-auto max-h-60">
-        <table className="min-w-full bg-white">
+        <table className="min-w-full bg-white dark:bg-mini ">
           <thead>
-            <tr className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+            <tr className="bg-gray-100 dark:bg-hover text-gray-600 dark:text-background uppercase text-sm leading-normal">
               <th className="py-3 px-6 text-left">Name</th>
               <th className="py-3 px-6 text-left">DoB</th>
               <th className="py-3 px-6 text-left">Gender</th>
@@ -58,9 +51,9 @@ const StudentsTab = ({
               <th className="py-3 px-6 text-center">Actions</th>
             </tr>
           </thead>
-          <tbody className="text-gray-600 text-sm">
+          <tbody className="text-gray-600 text-sm dark:text-background">
             {currentStudents.map((student) => (
-              <tr key={student.id} className="border-b border-gray-200 hover:bg-gray-50">
+              <tr key={student.id} className="border-b border-gray-200 dark:border-hover dark:hover:bg-blue-900 hover:bg-gray-50">
                 <td className="py-3 px-6">{`${student.firstName} ${student.lastName}`}</td>
                 <td className="py-3 px-6">{student.dob}</td>
                 <td className="py-3 px-6">{student.gender}</td>
@@ -68,10 +61,7 @@ const StudentsTab = ({
                 <td className="py-3 px-6">{student.enrollmentDate}</td>
                 <td className="py-3 px-6">
                   <span
-                    className={`py-1 px-3 rounded-full text-xs ${
-                      student.status === "Active" ? "bg-green-200 text-green-800" : "bg-red-200 text-red-800"
-                    }`}
-                  >
+                    className={`py-1 px-3 rounded-full text-xs ${student.status === "Active" ? "bg-green-200 text-green-800" : "bg-red-200 text-danger"}`}  >
                     {student.status}
                   </span>
                 </td>
@@ -82,8 +72,7 @@ const StudentsTab = ({
                         setEditingStudent(student)
                         setShowAddForm(true)
                       }}
-                      className="text-blue-600 hover:text-blue-900"
-                    >
+                      className="text-blue-600 hover:text-baclground" >
                       Edit
                     </button>
                     <button onClick={() => handleDeleteStudent(student.id)} className="text-red-600 hover:text-red-900">
@@ -97,7 +86,7 @@ const StudentsTab = ({
         </table>
       </div>
 
-      {/* Pagination */}
+      {/* paging */}
       {totalPages > 1 && (
         <div className="flex justify-between items-center mt-4">
           <div>
@@ -105,70 +94,41 @@ const StudentsTab = ({
             {filteredStudents.length} entries
           </div>
           <div className="flex space-x-1">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className={`px-3 py-1 rounded ${
-                currentPage === 1
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
+            <button  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1} className={`px-3 py-1 rounded ${currentPage === 1 ? "bg-gray-100 dark:bg-hover dark:text-background text-gray-400 cursor-not-allowed" : "bg-background dark:bg-hover dark:text-background text-gray-700 hover:bg-gray-300"  }`}  >
               Previous
             </button>
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`px-3 py-1 rounded ${
-                  currentPage === page ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                }`}
-              >
+                className={`px-3 py-1 rounded ${currentPage === page ? "bg-blue-600 text-white dark:bg-primary dark:text-background" : "dark:bg-hover dark:text-background bg-gray-200 text-gray-700 hover:bg-gray-300"  }`} >
                 {page}
               </button>
             ))}
-            <button
-              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-              disabled={currentPage === totalPages}
-              className={`px-3 py-1 rounded ${
-                currentPage === totalPages
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
+            <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}  disabled={currentPage === totalPages}  className={`px-3 py-1 rounded ${currentPage === totalPages ? "dark:bg-hover dark:text-background bg-gray-100 text-gray-400 cursor-not-allowed"  : "dark:bg-hover dark:text-background bg-gray-200 text-gray-700 hover:bg-gray-300"  }`} >
               Next
             </button>
           </div>
         </div>
       )}
 
-      {/* Add/Edit Student Modal */}
+      {/* student modal popup */}
       {showAddForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
+          <div className="bg-white dark:bg-hover dark:text-background rounded-lg p-6 w-full max-w-2xl">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-bold">{editingStudent ? "Edit Student" : "Add New Student"}</h3>
-              <button
-                onClick={() => {
+              <button onClick={() => {
                   setShowAddForm(false)
-                  setEditingStudent(null)
-                }}
-                className="text-gray-500 hover:text-gray-700"
-              >
+                   setEditingStudent(null)  }} className="text-gray-500 hover:text-gray-700"  >
                 Close
               </button>
             </div>
             <form onSubmit={handleStudentFormSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">First Name</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={studentFormData.firstName}
-                    onChange={handleStudentFormChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                  <label className="block text-sm font-medium text-gray-700 dark:bg-hover dark:text-background">First Name</label>
+                  <input type="text"  name="firstName"  value={studentFormData.firstName}  onChange={handleStudentFormChange}  required  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                   />
                 </div>
                 <div>

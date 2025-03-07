@@ -118,8 +118,8 @@ const StudentsPage = () => {
   }, [editingStudent])
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
-      <div className="flex justify-between items-center mb-6">
+    <div className="bg-white rounded-lg shadow p-6 dark:bg-mini">
+      <div className="flex justify-between items-center mb-6 dark:bg-mini">
         <h2 className="text-xl font-bold text-gray-800">Student List</h2>
         <button
           onClick={() => {
@@ -143,7 +143,7 @@ const StudentsPage = () => {
       </div>
 
       <div className="overflow-auto h-100 overflow-y-auto max-h-60">
-        <table className="min-w-full bg-white">
+        <table className="min-w-full bg-white dark:bg-mini">
           <thead>
             <tr className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
               <th className="py-3 px-6 text-left">Name</th>

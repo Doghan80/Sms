@@ -341,82 +341,38 @@ const Student = () => {
   }, [editingStudent])
 
   return (
-    <div className="bg-gray-50 overflow-hidden">
+    <div className="bg-background h-screen dark:bg-hover overflow-hidden">
       <nav className="bg-white shadow">
         <div className="container mx-auto">
-          <div className="flex space-x-4 p-4 overflow-x-auto  overflow-y-auto max-h-60">
-            <button
-              onClick={() => setActiveTab("students")}
-              className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "students" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
-            >
+          <div className="flex space-x-4 p-4 overflow-x-auto  overflow-y-auto max-h-60 mt-3 dark:bg-mini ">
+            <button  onClick={() => setActiveTab("students")}  className={`px-4 py-2 font-medium rounded whitespace-nowrap  ${activeTab === "students" ? "bg-blue-100 text-blue-600 " : "text-gray-600 hover:bg-gray-100"}`} >
               Students
             </button>
-            <button
-              onClick={() => setActiveTab("academic")}
-              className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "academic" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
-            >
+            <button  onClick={() => setActiveTab("academic")}  className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "academic" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}  >
               Academic Progress
             </button>
-            <button
-              onClick={() => setActiveTab("enrollment")}
-              className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "enrollment" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
-            >
+            <button  onClick={() => setActiveTab("enrollment")}  className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "enrollment" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}  >
               Enrollment
             </button>
-            <button
-              onClick={() => setActiveTab("dashboard")}
-              className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "dashboard" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
-            >
+            <button  onClick={() => setActiveTab("dashboard")}  className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "dashboard" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}  >
               Dashboard
             </button>
           </div>
         </div>
       </nav>
 
-      <main className="container mx-auto p-4">
+      <div className="container mx-auto p-4 ">
         {activeTab === "students" && (
-          <StudentsTab
-            students={students}
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            showAddForm={showAddForm}
-            setShowAddForm={setShowAddForm}
-            editingStudent={editingStudent}
-            setEditingStudent={setEditingStudent}
-            studentFormData={studentFormData}
-            handleStudentFormChange={handleStudentFormChange}
-            handleStudentFileChange={handleStudentFileChange}
-            handleStudentFormSubmit={handleStudentFormSubmit}
-            handleDeleteStudent={handleDeleteStudent}
-            currentStudents={currentStudents}
-            indexOfFirstStudent={indexOfFirstStudent}
-            indexOfLastStudent={indexOfLastStudent}
-            filteredStudents={filteredStudents}
-            totalPages={totalPages}
-          />
+          <StudentsTab  className="dark:bg-mini" students={students}   searchTerm={searchTerm}  setSearchTerm={setSearchTerm}  currentPage={currentPage}  setCurrentPage={setCurrentPage}  showAddForm={showAddForm}  setShowAddForm={setShowAddForm} editingStudent={editingStudent}  setEditingStudent={setEditingStudent}  studentFormData={studentFormData}  handleStudentFormChange={handleStudentFormChange}  handleStudentFileChange={handleStudentFileChange}  handleStudentFormSubmit={handleStudentFormSubmit}  handleDeleteStudent={handleDeleteStudent}  currentStudents={currentStudents}  indexOfFirstStudent={indexOfFirstStudent}  indexOfLastStudent={indexOfLastStudent}  filteredStudents={filteredStudents} totalPages={totalPages} />
         )}
         {activeTab === "academic" && (
-          <AcademicProgressTab
-            academicData={academicData}
-            events={events}
-            groupedData={groupedData}
-            semesters={semesters}
-            averageGrades={averageGrades}
-            averageAttendance={averageAttendance}
-          />
+          <AcademicProgressTab   academicData={academicData}  events={events}  groupedData={groupedData}  semesters={semesters}  averageGrades={averageGrades}  averageAttendance={averageAttendance}  />
         )}
         {activeTab === "enrollment" && <EnrollmentTab enrollments={enrollments} />}
         {activeTab === "dashboard" && (
-          <DashboardTab
-            stats={stats}
-            gradeDistribution={gradeDistribution}
-            enrollmentTrend={enrollmentTrend}
-            maxEnrollment={maxEnrollment}
-          />
+          <DashboardTab stats={stats} gradeDistribution={gradeDistribution}   enrollmentTrend={enrollmentTrend}  maxEnrollment={maxEnrollment}  />
         )}
-      </main>
+      </div>
     </div>
   )
 }
