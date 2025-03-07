@@ -336,13 +336,13 @@ const Student = () => {
   }, [editingStudent])
 
   return (
-    <div className="bg-gray-50 overflow-hidden">
-      <nav className="bg-white shadow">
-        <div className="container mx-auto">
-          <div className="flex space-x-4 p-4 overflow-x-auto  overflow-y-auto max-h-60">
+    <div className="bg-white h-screen dark:bg-hover overflow-hidden ml-5 ">
+      <nav className="bg-background dark:bg-mini  shadow">
+        <div className="container mx-auto dark:text-backkground">
+          <div className="flex space-x-4 p-4 overflow-x-auto  overflow-y-auto max-h-50 mt-4 boardared  ">
             <button
               onClick={() => setActiveTab("students")}
-              className={`px-4 py-2 font-medium rounded whitespace-nowrap ${activeTab === "students" ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
+              className={`px-4 py-2 font-medium rounded whitespace-nowrap  ${activeTab === "students" ? "bg-blue-100 text-blue-600 " : "text-gray-600 hover:bg-gray-100 "}`}
             >
               Students
             </button>
@@ -371,9 +371,9 @@ const Student = () => {
       <main className="container mx-auto p-4">
         {/* Student List Tab */}
         {activeTab === "students" && (
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-background dark:bg-mini rounded-lg shadow p-6">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold text-gray-800">Student List</h2>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-background">Student List</h2>
               <button
                 onClick={() => {
                   setEditingStudent(null)
@@ -395,8 +395,8 @@ const Student = () => {
               />
             </div>
 
-            <div className="overflow-auto h-100  overflow-y-auto max-h-60">
-              <table className="min-w-full bg-white">
+            <div className="overflow-auto h-100  overflow-y-auto max-h-60 ">
+              <table className="min-w-full bg-white dark:bg-background">
                 <thead>
                   <tr className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
                     <th className="py-3 px-6 text-left">Name</th>
@@ -498,7 +498,7 @@ const Student = () => {
             {/* Add/Edit Student Modal */}
             {showAddForm && (
               <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
+                <div className="bg-background dark:bg-mini dark:text-background rounded-lg p-6 w-full max-w-2xl">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-lg font-bold">{editingStudent ? "Edit Student" : "Add New Student"}</h3>
                     <button
@@ -512,48 +512,48 @@ const Student = () => {
                     </button>
                   </div>
                   <form onSubmit={handleStudentFormSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-background dark:bg-mini dark:text-background">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">First Name</label>
+                        <label className="block text-sm bg-background dark:bg-mini dark:text-background font-medium text-gray-700">First Name</label>
                         <input
                           type="text"
                           name="firstName"
                           value={studentFormData.firstName}
                           onChange={handleStudentFormChange}
                           required
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                          className="mt-1 block w-full bg-background dark:bg-mini dark:text-background border border-gray-300 rounded-md shadow-sm p-2"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Last Name</label>
+                        <label className="block text-sm bg-background dark:bg-mini dark:text-background font-medium text-gray-700">Last Name</label>
                         <input
                           type="text"
                           name="lastName"
                           value={studentFormData.lastName}
                           onChange={handleStudentFormChange}
                           required
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                          className="mt-1 block w-full border bg-background dark:bg-mini dark:text-background border-gray-300 rounded-md shadow-sm p-2"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
+                        <label className="block text-sm font-medium bg-background dark:bg-mini dark:text-background text-gray-700">Date of Birth</label>
                         <input
                           type="date"
                           name="dob"
                           value={studentFormData.dob}
                           onChange={handleStudentFormChange}
                           required
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                          className="mt-1 block w-full border bg-background dark:bg-mini dark:text-background border-gray-300 rounded-md shadow-sm p-2"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Gender</label>
+                        <label className="block text-sm font-medium bg-background dark:bg-mini dark:text-background text-gray-700">Gender</label>
                         <select
                           name="gender"
                           value={studentFormData.gender}
                           onChange={handleStudentFormChange}
                           required
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                          className="mt-1 block w-full border border-gray-300bg-background dark:bg-mini dark:text-background rounded-md shadow-sm p-2"
                         >
                           <option value="">Select Gender</option>
                           <option value="Male">Male</option>
@@ -562,34 +562,34 @@ const Student = () => {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Grade/Class</label>
+                        <label className="block text-sm font-medium text-gray-700 bg-background dark:bg-mini dark:text-background">Grade/Class</label>
                         <input
                           type="text"
                           name="grade"
                           value={studentFormData.grade}
                           onChange={handleStudentFormChange}
                           required
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-background dark:bg-mini dark:text-background"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Enrollment Date</label>
+                        <label className="block text-sm font-medium text-gray-700 bg-background dark:bg-mini dark:text-background">Enrollment Date</label>
                         <input
                           type="date"
                           name="enrollmentDate"
                           value={studentFormData.enrollmentDate}
                           onChange={handleStudentFormChange}
                           required
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                          className="mt-1 bg-background dark:bg-mini dark:text-background block w-full border border-gray-300 rounded-md shadow-sm p-2"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Status</label>
+                        <label className="block text-sm font-medium text-gray-700 bg-background dark:bg-mini dark:text-background">Status</label>
                         <select
                           name="status"
                           value={studentFormData.status}
                           onChange={handleStudentFormChange}
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-background dark:bg-mini dark:text-background" 
                         >
                           <option value="Active">Active</option>
                           <option value="Inactive">Inactive</option>
@@ -598,13 +598,13 @@ const Student = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Profile Photo</label>
+                      <label className="block text-sm font-medium text-gray-700 bg-background dark:bg-mini dark:text-background">Profile Photo</label>
                       <input
                         type="file"
                         name="photo"
                         onChange={handleStudentFileChange}
                         accept="image/*"
-                        className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                        className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700bg-background dark:bg-mini dark:text-background hover:file:bg-blue-100"
                       />
                       {studentFormData.photo && (
                         <div className="mt-2">
@@ -616,13 +616,13 @@ const Student = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Documents</label>
+                      <label className="block text-sm font-medium text-gray-700 bg-background dark:bg-mini dark:text-background">Documents</label>
                       <input
                         type="file"
                         name="documents"
                         onChange={handleStudentFileChange}
                         multiple
-                        className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                        className=" mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                       />
                       {studentFormData.documents.length > 0 && (
                         <div className="mt-2">
@@ -651,7 +651,7 @@ const Student = () => {
                       </button>
                       <button
                         type="submit"
-                        className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+                        className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary dark:bg-primary dark:text-background hover:bg-hover"
                       >
                         {editingStudent ? "Update Student" : "Add Student"}
                       </button>
