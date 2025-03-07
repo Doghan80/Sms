@@ -35,8 +35,8 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full ">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 px-8 mt-5">
+    <div className="w-full mt-9">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 px-8 ">
         <div className="w-full md:w-[400px] bg-background dark:bg-mini dark:text-background rounded-lg h-[100px] flex flex-row items-center justify-start  text-xl font-semibold p-5 shadow-lg hover:shadow-xl transition-all duration-300 gap-10">
           <FaUserGraduate className="text-blue-500 text-3xl ml-5" />
            <div className='flex flex-col'>

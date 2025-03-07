@@ -36,7 +36,7 @@ function AppRoutes() {
         </Routes>
       </div>
       {!hideHeaderAndSidebar && (<Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleSidebar={toggleSidebar} sidebarOpen={isSidebarOpen} />)} {!hideHeaderAndSidebar && <Sidebar isSidebarOpen={isSidebarOpen} />}
-      <div className={`transition-all mt-16 duration-300 flex-1 h-screen dark:bg-hover  ${isSidebarOpen ? "ml-0 pl-0" : "ml-32 pl-16"}`}>
+      <div className={`transition-all mt-16 duration-300 flex-1 h-screen dark:bg-hover pt-1  ${isSidebarOpen ? "ml-0 pl-0" : "ml-32 pl-16"}`}>
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/finance" element={<Finance />} />
